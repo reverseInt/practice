@@ -4,20 +4,12 @@ import random
 class Card(object):
 
 	@property
-	def dimensions(self):
-		return self._dimensions
-
-	@property
 	def dimension_count(self):
 		return len(self.dimensions)
 
-	@property
-	def dimension_size(self):
-		return self._dimension_size
-
 	def __init__(self, card, dimension_count, dimension_size):
-		self._dimensions = list(card)
-		self._dimension_size = dimension_size
+		self.dimensions = list(card)
+		self.dimension_size = dimension_size
 
 
 class Game(object):
