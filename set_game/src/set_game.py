@@ -35,7 +35,7 @@ class SampleGen(object):
 			for i in range(0, dimensions_count):
 				result.append(random.randint(0, size))
 			return result
-		return [perm for perm in [gen_sample() for _ in range(card_count)]]
+		return [gen_sample() for _ in range(card_count)]
 
 if __name__ == '__main__':
 	total_cards_count = 9
