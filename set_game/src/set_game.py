@@ -3,11 +3,10 @@ import random
 
 class Card(object):
 
-	@property
-	def dimension_count(self): 	    # the dimension_count can be removed here, dimensions already contain the info
-		return len(self.dimensions) # it can be passed in as a parameter in SampleGen(), don't have to a seperate attribute
-
-	def __init__(self, card, dimension_count, dimension_size):
+	def __init__(self, card, dimension_size):
+		"""
+		params dimension_size: the possible values of each dimension
+		"""
 		self.dimensions = list(card)
 		self.dimension_size = dimension_size
 
@@ -19,7 +18,7 @@ class Game(object):
 
 	def solve(self):
 		def set_checker(cards):
-			for i in range(0, cards[0].dimension_size): # here should be dimension_size or dimension_count? can just do for i in range(dimension_count)
+			for i in range(0, cards[0].dimension_size):
 				to_check = [card.dimensions[i] for card in cards]
 				if len(set(to_check)) == len(to_check) or len(set(to_check)) == 1:
 					continue
@@ -30,13 +29,17 @@ class Game(object):
 
 class SampleGen(object):
 	def gen_sample_cards(self, total_cards_count, dimensions_count, size, card_count):
+		"""
+		params card_count: The number of cards that forms a set, for example, if our dimension_size is 4, I can 
+		use 2 or 3 or 4 cards to form a set
+		"""
 		def gen_sample():
 			result = []
 			for i in range(0, dimensions_count):
 				result.append(random.randint(0, size))
 			return result
-		return [gen_sample() for _ in range(card_count)] # what is card_count? shall it be total_cards_count?, card_count here is not needed
-
+		return [gen_sample() for _ in range(card_count)] 
+		
 if __name__ == '__main__':
 	total_cards_count = 9
 	dimensions_count = 4
