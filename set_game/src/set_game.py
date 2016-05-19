@@ -4,8 +4,8 @@ import random
 class Card(object):
 
 	@property
-	def dimension_count(self):
-		return len(self.dimensions)
+	def dimension_count(self): 	    # the dimension_count can be removed here, dimensions already contain the info
+		return len(self.dimensions) # it can be passed in as a parameter in SampleGen(), don't have to a seperate attribute
 
 	def __init__(self, card, dimension_count, dimension_size):
 		self.dimensions = list(card)
@@ -19,13 +19,13 @@ class Game(object):
 
 	def solve(self):
 		def set_checker(cards):
-			for i in range(0, cards[0].dimension_size):
+			for i in range(0, cards[0].dimension_size): # here should be dimension_size or dimension_count? can just do for i in range(dimension_count)
 				to_check = [card.dimensions[i] for card in cards]
 				if len(set(to_check)) == len(to_check) or len(set(to_check)) == 1:
 					continue
 				return False
 			return True
-		return [cards for cards in itertools.combinations(self.cards, self.card_number) if set_checker(self.cards)]
+		return [cards for cards in itertools.combinations(self.cards, self.card_number) if set_checker(self.cards)] # here I don't understand, set_checker should check each subset, why pass in self.cards here?
 		
 
 class SampleGen(object):
@@ -35,7 +35,7 @@ class SampleGen(object):
 			for i in range(0, dimensions_count):
 				result.append(random.randint(0, size))
 			return result
-		return [gen_sample() for _ in range(card_count)]
+		return [gen_sample() for _ in range(card_count)] # what is card_count? shall it be total_cards_count?, card_count here is not needed
 
 if __name__ == '__main__':
 	total_cards_count = 9
