@@ -39,7 +39,7 @@ def check_neighbors(data, i, j):
 			if result is None:
 				result = check_sign(i + p, j + q)
 			else:
-				if result != check_sign(i + p, j + 1):
+				if result != check_sign(i + p, j + q):
 					return False
 	return True if result is not None else False
 
