@@ -19,7 +19,7 @@ def write_to_file(total_lines):
 
 	with open('output/result.txt', 'w') as f:
 		for index in range(0, total_lines):
-			line = ','.join([str(random.randint(-9999, 9999)) for _ in range(0, 5)])
+			line = ','.join([str(random.randint(-99, 999)) for _ in range(0, 5)])
 			f.write(line + '\n')	
 
 if __name__ == '__main__':
