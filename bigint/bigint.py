@@ -20,7 +20,7 @@ class BigInt(object):
 		self._value = value[::-1]
 
 	def __repr__(self):
-		return ''.join([i for i in self._value][::-1])
+		return ''.join(self._value[::-1])
 
 	@staticmethod
 	def add_int(*args):
