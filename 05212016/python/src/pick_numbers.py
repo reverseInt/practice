@@ -6,7 +6,7 @@ from collections import Counter
 def parse():
 	parser = argparse.ArgumentParser()
 
-	parser.add_argument('-m', type=int, default=2)
+	parser.add_argument('-m', type=int, default=1)
 	parser.add_argument('-n', type=int, default=2)
 	parser.add_argument('-p', type=int, default=5)
 
@@ -26,6 +26,9 @@ def read_file(filename = 'output/result.txt'):
 def check_neighbors(data, i, j):
 	def check_sign(p, q):
 		try:
+			if data[p][q] == 0:
+				return None
+
 			return data[p][q] > 0
 		except:
 			return None
@@ -36,9 +39,9 @@ def check_neighbors(data, i, j):
 			if result is None:
 				result = check_sign(i + p, j + q)
 			else:
-				if result != check_sign(i + p, j + 1):
+				if result != check_sign(i + p, j + q):
 					return False
-	return True
+	return True if result is not None else False
 
 
 def find_numbers(data, m, n, p):
