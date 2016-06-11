@@ -2,7 +2,7 @@
 def helper(curr, result):
 	candidates = []
 	for i in range(0, len(curr)):
-		for j in range(i, len(curr)):
+		for j in range(i + 1, len(curr)):
 			diff = abs(curr[i] - curr[j])
 			if diff > 0 and diff not in curr and diff not in candidates:
 				candidates.append(diff)
