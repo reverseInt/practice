@@ -52,7 +52,7 @@ if __name__ == '__main__':
 
 	nums = [1, 2, 3, 6, 9]
 	print s.find_max_product(nums)
-	nums = [1, -1, -2, 5, 9, 10]
+	nums = [-10, 0, -2, -20, 0, 0]
 	print s.find_max_product(nums)
 	nums = [1, -1, -2]
 	print s.find_max_product(nums)
