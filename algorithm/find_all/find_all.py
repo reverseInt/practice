@@ -2,7 +2,7 @@
 def helper(curr, result):
 	candidates = []
 	for i in range(0, len(curr)):
-		for j in range(1, len(curr)):
+		for j in range(i, len(curr)):
 			diff = abs(curr[i] - curr[j])
 			if diff > 0 and diff not in curr and diff not in candidates:
 				candidates.append(diff)
@@ -27,8 +27,9 @@ def find_all(nums):
 
 
 if __name__ == '__main__':
-	print find_all([3, 21])
-	print find_all([5, 20])
+	print find_all([21, 3])
+	print find_all([8])
+
 
 
 
